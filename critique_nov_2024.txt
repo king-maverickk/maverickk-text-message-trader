@@ -1,0 +1,37 @@
+rudimentary. juvenile. a damn shame.
+
+lets talk it over. firstly, "doingATrade.py".
+straight up forgery after the click() method. although, cool* use of the repeatDown() to speed up process. the forgeries are heavy. moving on... the implementation? of the code is so rigid. it fits one use case, per use. Yes it will work but not all softwares of MT4 are the same. Like the different brokers** have different softwares, at least on pc. we see many vendors. the software here is meant to fulfill something. ***you know, to use this code (as a user) it would be helpful to have a colourful way of setting this up of course. like because the softwares are different, and "we want this miracle code to work on OUR machine (too)," - user. having them (currently; in this current state of terrible code). now, a low-easy-to-follow set up could be in place**** 
+
+
+*making it do the clicking like that; super fast, realistic/robotic
+**look up forex trader brokers
+***an entire wing of software peddlers? salespeople? basically, people that have access to the software, want to share the software... yk. so basically. so basically what i was saying was, i'd create a program that; the user follows the process of making clicks and reading texts and trading currencies; the program remembers, what is where and stuff - like i feel a computer vision software (opencv2) would be grand, the program needs to take screenshots and remember the mouse positioning of every relevant angle; remember the keyboard strokes too. the plan here is too create custom scripts for every user.  
+**** the user is told "hey! click this button located somewhere here" by the program highlighting the user's pc screen; indicating where next setting/trade/menu option could be. then the user follows all the steps, gathers all relevant info. that is, 1. currency, 2. option (buy/sell), 3. take profit (tp) & stop loss (sl) & 4. volume. the rest we'll see. 
+
+so, amassing users is fine, its okay, the code here is just shocking. it'd be a fine project with these starred changes tho. i like how readTexts.py alley-oops doingATrade. it provides it with nice looking info. (in main). 230 lines!
+
+next, we have readTexts.py
+okay, super bold code here. lots of api's in the beginning, some old chat dialogs (chat id's) and it moves into the realm of regular expression. very good but its so messy. comments very early that were left there, very good... need to delete those api and hash credentials. set them as environment variables. the bad stuff comes in at main. 
+
+if re.findall('buy', text, re.IGNORECASE):
+            tradeJSON.write('"option": "buy",')
+            buyINDEX = x.index("BUY") or x.index("buy") or x.index("Buy")
+            if buyINDEX +1 == int or float:
+                # currency = x[1]
+                tradeJSON.write(f'"currency":"{buyINDEX + 1}",')
+            elif buyINDEX+2 == int or float:
+                tradeJSON.write(f'"currency": "{x[0]}",')
+
+            if buyINDEX+1 == re.findall(currency, text, re.IGNORECASE):
+                tradeJSON.write(f'"currency":"{buyINDEX+1}"')
+            elif buyINDEX+2 == re.findall(currency, text, re.IGNORECASE):
+                tradeJSON.write(f'"currency":"{buyINDEX + 2}"')
+
+something here is putrid. in a kind way. like there's attempt but, knowing what i know - being extra critical... let's see, i think 2 if/elif's should be deleted, and then having the surviving ones enhanced. same with "sell". jeez getting out of those nested if's was crazy. feel like i can breathe easy out here. the checkUp()... hmm... its good its going to check up, but it shouldn't repeat trades. just saying. 
+
+xyz.py
+not a lot of indication as to what's happening here. it *should be the final product. nice methods? maybe idk. they look daunting. i'll say when i try them** also, the way the telethon TelegramClient is being intialised here, is different to the way it was in "readTexts.py". here it now requires a phone number (in international format fyi). in the __name__ == '__main__', there is the client start()'ing with the phone numer; in there, the "cool" methods are being used, but i reckon i should just touch it so it works, or i know i need to make it read the message. ...i don't have a lot words here. very short code too.
+
+*but it isn't
+**haven't tried them yet.
